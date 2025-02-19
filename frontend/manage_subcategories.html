@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Subcategories</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 30px auto;
+            padding: 20px;
+            background: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #4CAF50;
+        }
+
+        .subcategory-section {
+            margin-top: 20px;
+        }
+
+        form {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        label {
+            flex-basis: 100%;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="number"] {
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: calc(100% - 22px);
+            max-width: 300px;
+        }
+
+        input {
+            flex: 1;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        button {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        table thead {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        table th, table td {
+            text-align: left;
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+
+        table tbody tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        table button {
+            width: 50%;
+        }
+
+        #category-name {
+            color: #007bff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Manage Subcategories for <span id="category-name"></span></h1>
+        <div class="subcategory-section">
+            <h3>Subcategories</h3>
+            <form id="add-subcategory-form">
+                <label for="subcategory-name">Subcategory Name:</label>
+                <input type="text" id="subcategory-name" placeholder="Enter subcategory name" required>
+
+                <label for="subcategory-weight">Weight:</label>
+                <input type="number" id="subcategory-weight" value="10" min="0" required>
+
+                <button type="submit">Add Subcategory</button>
+            </form>
+            <h3>Existing Subcategories</h3>
+            <table id="subcategory-table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Weight</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Subcategory rows will go here -->
+                </tbody>
+            </table>
+        </div>
+        <button onclick="window.location.href='index.html'">Back to Main Page</button>
+    </div>
+    <script src="manage_subcategories.js"></script>
+</body>
+</html>

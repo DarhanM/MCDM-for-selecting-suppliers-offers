@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Best Provider Selector</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <a href="index_ru.html">RU</a>
+        <a href="index.html">EN</a>
+        <h1>Best Provider Selector</h1>
+        <div class="filter-section">
+            <label for="filter-name">Search Product by Name:</label>
+            <input type="text" id="filter-name" placeholder="Enter product name">
+            <button onclick="filterProducts()">Filter</button>
+        </div>
+        <div class="weights-section">
+            <h3>Adjust Categories</h3>
+            <div class="weights-row">
+                <label>Quality %: <input type="number" id="weight-quality" value="40" step="1" min="0" max="100"></label>
+                <label>Price %: <input type="number" id="weight-price" value="30" step="1" min="0" max="100"></label>
+                <label>Supplier experience %: <input type="number" id="weight-supplier-experience" value="20" step="1" min="0" max="100"></label>
+                <label>Delivery time %: <input type="number" id="weight-delivery-time" value="10" step="1" min="0" max="100"></label>
+            </div>
+        </div>
+        <div class="categories-section">
+            <h3>Manage Categories</h3>
+            <ul class="categories-list">
+                <li>
+                    Quality
+                    <button onclick="window.location.href='manage_subcategories.html?categoryId=1'">Manage Subcategories</button>
+                </li>
+                <li>
+                    Price
+                </li>
+                <li>
+                    Supplier Experience
+                    <button onclick="window.location.href='manage_subcategories.html?categoryId=3'">Manage Subcategories</button>
+                </li>
+                <li>
+                    Delivery Time
+                </li>
+            </ul>
+        </div>
+        <button onclick="calculateBest()">Calculate Best Provider</button>
+        <p id="result">Result: </p>
+        <div class="products-section">
+            <h3>Products</h3>
+            <table id="products-table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Supplier</th>
+                        <th>Price</th>
+                        <th>Delivery time</th>
+                        <th>Product requirements</th>
+                        <th>Supplier Experience Details</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

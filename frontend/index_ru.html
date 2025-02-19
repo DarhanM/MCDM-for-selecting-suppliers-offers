@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Выбор лучшего поставщика</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <a href="index_ru.html">RU</a>
+        <a href="index.html">EN</a>
+        <h1>Выбор лучшего поставщика</h1>
+        <div class="filter-section">
+            <label for="filter-name">Поиск товара по названию:</label>
+            <input type="text" id="filter-name" placeholder="Введите название товара">
+            <button onclick="filterProducts()">Фильтровать</button>
+        </div>
+        <div class="weights-section">
+            <h3>Настроить категории</h3>
+            <div class="weights-row">
+                <label>Качество %: <input type="number" id="weight-quality" value="40" step="1" min="0" max="100"></label>
+                <label>Цена %: <input type="number" id="weight-price" value="30" step="1" min="0" max="100"></label>
+                <label>Опыт поставщика %: <input type="number" id="weight-supplier-experience" value="20" step="1" min="0" max="100"></label>
+                <label>Срок доставки %: <input type="number" id="weight-delivery-time" value="10" step="1" min="0" max="100"></label>
+            </div>
+        </div>
+        <div class="categories-section">
+            <h3>Управление категориями</h3>
+            <ul class="categories-list">
+                <li>
+                    Качество
+                    <button onclick="window.location.href='manage_subcategories_ru.html?categoryId=1'">Управлять подкатегориями</button>
+                </li>
+                <li>
+                    Цена
+                </li>
+                <li>
+                    Опыт поставщика
+                    <button onclick="window.location.href='manage_subcategories_ru.html?categoryId=3'">Управлять подкатегориями</button>
+                </li>
+                <li>
+                    Срок доставки
+                </li>
+            </ul>
+        </div>
+        <button onclick="calculateBest()">Рассчитать лучшего поставщика</button>
+        <p id="result">Результат: </p>
+        <div class="products-section">
+            <h3>Товары</h3>
+            <table id="products-table">
+                <thead>
+                    <tr>
+                        <th>Название</th>
+                        <th>Поставщик</th>
+                        <th>Цена</th>
+                        <th>Срок доставки</th>
+                        <th>Требования к товару</th>
+                        <th>Детали опыта поставщика</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
