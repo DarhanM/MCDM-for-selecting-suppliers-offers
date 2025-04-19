@@ -7,7 +7,7 @@ body {
 }
 
 .container {
-    max-width: 1200px;
+    max-width: 1300px;
     margin: 20px auto;
     padding: 20px;
     background: #fff;
@@ -54,7 +54,7 @@ button {
 }
 
 button:hover {
-    background-color: #45a049;
+    background-color: #25792a;
 }
 
 .weights-row {
@@ -76,7 +76,7 @@ button:hover {
 
 .add-product-row label {
     flex: 1;
-    max-width: 230px;
+    max-width: 250px;
 }
 
 .add-product-row button {
@@ -125,6 +125,15 @@ table td {
 
 table tbody tr:nth-child(even) {
     background-color: #f9f9f9;
+}
+
+#product-delete-button {
+    padding: 5px 15px;
+    background-color: #cc1212c9;
+}
+
+#product-delete-button:hover {
+    background-color: #920d0dd5;
 }
 
 #result {

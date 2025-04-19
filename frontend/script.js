@@ -14,6 +14,7 @@ const translations = {
         appProductFetchError: 'Failed to create new product',
         alertNewProductSuccess: 'Product added successfully!',
         alertNewProductFail: 'An error occurred while creating product',
+        productDeleteError: 'Failed to delete product',
     },
     ru: {
         fetchError: 'Не удалось получить данные',
@@ -24,6 +25,7 @@ const translations = {
         appProductFetchError: 'Не получилось создать новый товар',
         alertNewProductSuccess: 'Товар успешно добавлен!',
         alertNewProductFail: 'Произошла ошибка при создании товара',
+        productDeleteError: 'Не удалось удалить товар',
     }
 };
 
@@ -52,6 +54,15 @@ async function fetchProductSubcategories(productId) {
     return response.json();
 }
 
+async function deleteProductById(productId) {
+    const response = await fetch(`${API_URL}/product/${productId}`, {
+        method: "DELETE",
+        headers: { 'Content-Type': 'application/json' },
+    });
+    if (!response.ok) throw new Error(`${translations[lang].productDeleteError}`);
+    return response.json();
+}
+
 // Функции для изменения сайта
 // Для вставления товаров в таблицу
 async function displayProducts(filter = '') {
@@ -68,6 +79,7 @@ async function displayProducts(filter = '') {
                 <td>${product.deliveryTime}</td>
                 <td><button onclick="window.location.href='product_details.html?productId=${product.id}&categoryId=1'">${translations[lang].viewDetails}</button></td>
                 <td><button onclick="window.location.href='product_details.html?productId=${product.id}&categoryId=3'">${translations[lang].viewDetails}</button></td>
+                <td><button onclick="deleteProduct(${product.id})", id="product-delete-button">Delete product</button></td>
             </tr>`;
         } else if (lang == 'ru') {
             row = `<tr>
@@ -77,6 +89,7 @@ async function displayProducts(filter = '') {
                 <td>${product.deliveryTime}</td>
                 <td><button onclick="window.location.href='product_details_ru.html?productId=${product.id}&categoryId=1'">${translations[lang].viewDetails}</button></td>
                 <td><button onclick="window.location.href='product_details_ru.html?productId=${product.id}&categoryId=3'">${translations[lang].viewDetails}</button></td>
+                <td><button onclick="deleteProduct(${product.id})", id="product-delete-button">Delete product</button></td>
             </tr>`;
         }
         tbody.innerHTML += row;
@@ -192,6 +205,10 @@ async function addNewProduct() {
         console.error("Error: " + error)
         alert(translations[lang].alertNewProductFail)
     })
+}
+
+async function deleteProduct(productId) {
+    await deleteProductById(productId);
 }
 
 // Загрузка товаров при загрузке страницы

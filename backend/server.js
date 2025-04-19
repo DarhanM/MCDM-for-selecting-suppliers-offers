@@ -228,7 +228,6 @@ app.delete('/subcategory/:subcategoryId', (req, res) => {
 
 app.post('/product', (req, res) => {
     const {name, supplier, price, deliveryTime} = req.body;
-    console.log(name, supplier, price, deliveryTime);
 
     db.run(`INSERT INTO products (name, supplier, price, deliveryTime)
         VALUES (?, ?, ?, ?)`,
