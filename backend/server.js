@@ -245,16 +245,33 @@ app.post('/product', (req, res) => {
 app.delete('/product/:id', (req, res) => {
     const {id} = req.params;
 
-    db.run(`DELETE FROM products WHERE id = ?`,
-        [id],
-        function (err) {
+    db.serialize(() => {
+        db.run("BEGIN TRANSACTION");
+
+        db.run(`DELETE FROM product_details WHERE productId = ?`, [id], function(err) {
             if (err) {
-                res.status(500).json({ error: err.message });
+                db.run("ROLLBACK");
+                res.status(500).json({ error: "Error deleting product details: " + err.message });
                 return;
             }
-            res.json({ message: 'Deleted successfully' });
-        }
-    )
+
+            db.run(`DELETE FROM products WHERE id = ?`, [id], function(err2) {
+                if (err2) {
+                    db.run("ROLLBACK");
+                    res.status(500).json({ error: "Error deleting product: " + err2.message });
+                    return;
+                }
+
+                db.run("COMMIT", (err3) => {
+                    if (err3) {
+                        res.status(500).json({ error: "Commit failed: " + err3.message });
+                    } else {
+                        res.json({ message: 'Deleted successfully' });
+                    }
+                });
+            });
+        });
+    });
 })
 
 app.listen(PORT, () => {
