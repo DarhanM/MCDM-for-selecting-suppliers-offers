@@ -34,7 +34,7 @@ function addSubcategory(name, weight, categoryId) {
     })
     .then((result) => {
         alert(isRussian ? "Подкатегория успешно добавлена!" : "Subcategory added successfully!");
-        console.log(result);
+        // console.log(result);
     })
     .catch(error => {
         console.error("Error:", error);
@@ -56,7 +56,7 @@ async function updateSubcategory(subcategoryId) {
     })
     .then((result) => {
         alert(isRussian ? "Подкатегория успешно обновлена!" : "Subcategory updated successfully!");
-        console.log(result);
+        // console.log(result);
     })
     .catch(error => {
         console.error("Error:", error);
@@ -76,7 +76,7 @@ async function deleteSubcategory(subcategoryId) {
     })
     .then((result) => {
         alert(isRussian ? "Подкатегория успешно удалена!" : "Subcategory deleted successfully!");
-        console.log(result);
+        // console.log(result);
     })
     .catch(error => {
         console.error("Error:", error);

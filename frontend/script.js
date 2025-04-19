@@ -10,14 +10,20 @@ const translations = {
         alertWeight: 'The total weight must equal 100%',
         bestProvider: 'Best provider is',
         withScore: 'with a score of',
-        viewDetails: 'View Details'
+        viewDetails: 'View Details',
+        appProductFetchError: 'Failed to create new product',
+        alertNewProductSuccess: 'Product added successfully!',
+        alertNewProductFail: 'An error occurred while creating product',
     },
     ru: {
         fetchError: 'Не удалось получить данные',
         alertWeight: 'Общий вес должен быть равен 100%',
         bestProvider: 'Лучший поставщик',
         withScore: 'с оценкой',
-        viewDetails: 'Подробнее'
+        viewDetails: 'Подробнее',
+        appProductFetchError: 'Не получилось создать новый товар',
+        alertNewProductSuccess: 'Товар успешно добавлен!',
+        alertNewProductFail: 'Произошла ошибка при создании товара',
     }
 };
 
@@ -88,7 +94,7 @@ async function calculateBest() {
     const valueDeliveryTime = parseInt(document.getElementById("weight-delivery-time").value);
 
     if (valueQuality + valuePrice + valueSupplierExperience + valueDeliveryTime !== 100) {
-        console.log(valueQuality + valuePrice + valueSupplierExperience + valueDeliveryTime);
+        // console.log(valueQuality + valuePrice + valueSupplierExperience + valueDeliveryTime);
         alert(translations[lang].alertWeight);
         return;
     }
@@ -161,6 +167,31 @@ async function calculateBest() {
 async function filterProducts() {
     const filter = document.getElementById('filter-name').value;
     displayProducts(filter);
+}
+
+async function addNewProduct() {
+    const name = document.getElementById('product-name').value;
+    const supplier = document.getElementById('product-supplier').value;
+    const price = document.getElementById('product-price').value;
+    const deliveryTime = document.getElementById('product-delivery-time').value;
+
+    fetch(`${API_URL}/product`, {
+        method: "POST",
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, supplier, price, deliveryTime }),
+    })
+    .then(response => {
+        if (!response.ok)
+            throw new Error(translations[lang].appProductFetchError)
+        return response.json()
+    })
+    .then(result => {
+        alert(translations[lang].alertNewProductSuccess)
+    })
+    .catch(error => {
+        console.error("Error: " + error)
+        alert(translations[lang].alertNewProductFail)
+    })
 }
 
 // Загрузка товаров при загрузке страницы

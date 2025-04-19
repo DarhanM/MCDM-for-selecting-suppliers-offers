@@ -226,6 +226,38 @@ app.delete('/subcategory/:subcategoryId', (req, res) => {
     )
 })
 
+app.post('/product', (req, res) => {
+    const {name, supplier, price, deliveryTime} = req.body;
+    console.log(name, supplier, price, deliveryTime);
+
+    db.run(`INSERT INTO products (name, supplier, price, deliveryTime)
+        VALUES (?, ?, ?, ?)`,
+        [name, supplier, price, deliveryTime],
+        function (err) {
+            if (err) {
+                res.status(500).json({ error: err.message })
+                return;
+            }
+            res.json({ message: 'Created successfully'} )
+        }
+    )
+})
+
+app.delete('/product/:id', (req, res) => {
+    const {id} = req.params;
+
+    db.run(`DELETE FROM products WHERE id = ?`,
+        [id],
+        function (err) {
+            if (err) {
+                res.status(500).json({ error: err.message });
+                return;
+            }
+            res.json({ message: 'Deleted successfully' });
+        }
+    )
+})
+
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
 });
