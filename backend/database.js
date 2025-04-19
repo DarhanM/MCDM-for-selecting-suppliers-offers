@@ -9,42 +9,19 @@ db.serialize(() => {
     // `);
 
     // db.run(`
-    //     DROP TABLE product_subcategories;
-    // `);
-
-    // db.run(`
-    //     INSERT INTO categories (name, percentage) VALUES
-    //         ('Quality', 0),
-    //         ('Price', 0),
-    //         ('Supplier Experience', 0),
-    //         ('Delivery Time', 0)
-    // `);
-
-    // db.run(`
-    //     UPDATE categories
-    //     SET percentage = 50
-    //     WHERE name = 'Quality'
-    // `)
-
-    // db.run(`
     //     INSERT INTO products (name, supplier, price, deliveryTime) VALUES
-    //         ('Phone (IPhone 16)', 'Apple', 2000, 4),
-    //         ('Phone (Samsung S24)', 'Samsung', 1800, 2),
-    //         ('Phone (Pixel 8)', 'Google', 800, 6),
-    //         ('Phone (Galaxy Fold 5)', 'Samsung', 1600, 8),
-    //         ('Laptop (MacBook Pro)', 'Apple', 3000, 10),
-    //         ('Laptop (Dell XPS 15)', 'Dell', 2000, 8),
-    //         ('Laptop (ThinkPad X1 Carbon)', 'Lenovo', 4000, 8),
-    //         ('Tablet (iPad Pro)', 'Apple', 1600, 6),
-    //         ('Tablet (Surface Pro 9)', 'Microsoft', 1000, 4),
-    //         ('Phone (Asus ROG Phone 7)', 'Asus', 1000, 2),
-    //         ('Phone (OnePlus 12)', 'OnePlus', 800, 2);
-    // `);    
-
-    // db.run(`
-    //     INSERT INTO products (name, supplier, price, deliveryTime) VALUES
-    //     ('Sony WH-CH720N Noise Canceling Wireless Headphones Bluetooth Over The Ear Headset with Microphone and Alexa Built-in, Black New', 'Sony', 1000, 5);
-    // `)
+    //         ('CubeSat PCB Frame Kit (PC104)', 'ISISpace', 250, 7),
+    //         ('Solar Panel for CubeSat (GOMSpace NanoSol)', 'GOMSpace', 800, 4),
+    //         ('DC-DC Converter (Vicor DCM3623T50)', 'DigiKey', 480, 5),
+    //         ('Sun Sensor Module (ISIS Space)', 'ISISpace', 1400, 8),
+    //         ('OBC Module with RTEMS OS (GOMX-3)', 'GOMSpace', 5000, 14),
+    //         ('Star Tracker (ST-16 by NewSpace)', 'NewSpace Systems', 25000, 14),
+    //         ('Reaction Wheel (Blue Canyon RWpico)', 'Blue Canyon Technologies', 7000, 14),
+    //         ('Magnetorquer (CubeSpace MTQ 3-Axis)', 'CubeSpace', 2500, 7),
+    //         ('Kapton Thermal Blanket (DuPont)', 'DuPont', 80, 2),
+    //         ('Mini Radiator Plate (Aluminum, Honeycomb)', 'Wellste', 300, 2),
+    //         ('Vibration Isolator Mount (Sorbothane 30D)', 'Sorbothane', 14, 1);
+    // `);
 
     // db.run(`
     //     UPDATE products

@@ -97,7 +97,7 @@ app.get('/product/:id/subcategories', (req, res) => {
     const { id } = req.params;
     db.all(
         `SELECT ps.subcategoryId, ps.applies, s.name, s.weight, s.categoryId
-         FROM product_subcategories ps
+         FROM product_details ps
          JOIN subcategories s ON ps.subcategoryId = s.id
          WHERE ps.productId = ? AND ps.applies = true`,
         [id],
@@ -117,7 +117,7 @@ app.post('/product/:id/subcategory/:subcategoryId', (req, res) => {
     const { applies } = req.body;
 
     db.run(
-        `INSERT INTO product_subcategories (productId, subcategoryId, applies) 
+        `INSERT INTO product_details (productId, subcategoryId, applies) 
          VALUES (?, ?, ?)
          ON CONFLICT(productId, subcategoryId) 
          DO UPDATE SET applies = ?`,
